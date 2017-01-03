@@ -1,6 +1,7 @@
+import template from './chat-window.html';
 angular.module('chinwag')
     .component('chat', {
-        templateUrl: 'client/chinwag/chat.html',
+        templateUrl: template,
         controller: function($scope, $toastr, $log, $chatWindow) {
 
             this.noLog = false;

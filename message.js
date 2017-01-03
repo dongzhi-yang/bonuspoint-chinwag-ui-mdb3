@@ -1,5 +1,5 @@
 'use strict';
-
+import template from './message.html';
 angular.module('chinwag')
     .component('message', {
         templateUrl: 'client/chinwag/message.html',

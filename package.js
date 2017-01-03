@@ -13,7 +13,27 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.4.2.3');
   api.use('ecmascript');
-  api.mainModule('chinwag-ui-mdb3.js');
+  api.use('angular-templates');
+  api.use('bonuspoint:product');
+  api.use('bonuspoint:core');
+  api.use('fourseven:scss');
+  api.use('bonuspoint:mdb3');
+  api.addAssets(['_chinwag.scss',
+  '_topic-selector.scss',
+  ],'client');
+  api.addFiles(['chat-window.html',
+  'chat-window.js',
+  'chat.html',
+  'chat.js',
+  'chinwag.html',
+  'chinwag.js',
+  'input-panel.html',
+  'input-panel.js',
+  'message-list.html',
+  'message-list.js',
+  'message.html',
+  'message.js',
+  ],'client');
 });
 
 Package.onTest(function(api) {

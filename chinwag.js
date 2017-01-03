@@ -1,8 +1,9 @@
 'use strict';
-import '../../node_modules/ng-embed/src/ng-embed.css';
+import '{}/node_modules/ng-embed/src/ng-embed.css';
+import template from './chinwag.html';
 angular.module('chinwag')
     .component('chinwag', {
-        templateUrl: 'client/chinwag/chinwag.html',
+        templateUrl: template,
         bindings: {
           mode: '@?' // "desktop" or "mobile"
         },

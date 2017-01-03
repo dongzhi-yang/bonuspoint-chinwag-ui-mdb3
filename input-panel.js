@@ -1,5 +1,5 @@
 'use strict';
-
+import template from './input-panel.html';
 angular.module('chinwag')
     .component('inputPanel', {
         templateUrl: 'client/chinwag/input-panel.html',

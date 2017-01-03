@@ -1,8 +1,8 @@
 'use strict';
-
+import template from './message-list.html';
 angular.module('chinwag')
     .component('messageList', {
-        templateUrl: 'client/chinwag/message-list.html',
+        templateUrl: template,
         controller: function($scope, $messageList, $timeout, $element, $attrs, $log, $interval) {
             this.noLog = true;
             this.noLog || $log.debug("MessageList controller has started at" + new Date(), this.chatId);

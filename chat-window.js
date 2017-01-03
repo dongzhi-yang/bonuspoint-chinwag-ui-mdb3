@@ -1,8 +1,9 @@
 'use strict';
 
+import template from './chat-window.html';
 angular.module('chinwag')
     .component('chatWindow', {
-        templateUrl: 'client/chinwag/chat-window.html',
+        templateUrl: template,
         controller: function ($scope, $toastr,$log,$chatWindow) {
           this.noLog = true;
           $chatWindow.dataService.call(this,$scope);

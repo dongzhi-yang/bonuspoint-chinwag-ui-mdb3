@@ -1,0 +1,52 @@
+<div class="{{$ctrl.isCurrentUser ? 'dropdown' : ''}} chinwag-user-status" ng-if="$ctrl.user">
+    <ni-image image-class="chinwag-user-image rounded" src="$ctrl.user.img" alt="$ctrl.image.userPlaceholder"></ni-image>
+    <div class="{{$ctrl.isCurrentUser ? 'dropdown-toggle' : ''}}" data-toggle="dropdown" ng-show="$ctrl.showStatus">
+        <i
+            class="material-icons  {{$ctrl.user.status.online ? $ctrl.statusList[$ctrl.user.status.name].class : $ctrl.statusList['4-offline'].class }} chinwag-status-icon"
+            ng-bind="$ctrl.user.status.online ? $ctrl.statusList[$ctrl.user.status.name].icon : $ctrl.statusList['4-offline'].icon"></i>
+    </div>
+    <span class="chinwag-status-user-name" ng-show="$ctrl.showName" >
+        <span ng-bind="$ctrl.displayName | limitTo: 25" ></span>
+        <span ng-show="$ctrl.displayName.length > 25">...</span>
+    </span>
+    <span class="chinwag-status-user-type" ng-bind = "$ctrl.user.profile.userType" ng-show="$ctrl.showUserType"></span>
+    <div class="chinwag-status-description" ng-show="$ctrl.showStatusDescription">
+        <div
+            ng-show="!$ctrl.editStatusDescription"
+            ng-click="$ctrl.startEditStatusDescription()"
+            ng-bind="$ctrl.user.status.online ? $ctrl.user.customStatusList[$ctrl.user.status.name].description || $ctrl.statusList[$ctrl.user.status.name].description : $ctrl.user.customStatusList['4-offline'].description || $ctrl.statusList['4-offline'].description"></div>
+
+        <div ng-show="$ctrl.editStatusDescription" class="row">
+            <div class=" col-xs-6">
+                <input type="text" id="customStatusDescription" maxlength="$ctrl.maxStatusLength" ng-model="$ctrl.user.customStatusList[$ctrl.user.status.name ].description" ng-change="$ctrl.validateCustomStatus()">
+            </div>
+            <div class="col-xs-1">
+                <a class="delete-btn-class" ng-click="$ctrl.editStatusDescription = false;$ctrl.user.customStatusList[$ctrl.user.status.name ].description=$ctrl.oldStatusDescription;">
+                    <i class="material-icons">&#xE14C;</i>
+                </a>
+            </div>
+            <div class="col-xs-1">
+                <a class="check-btn-class" ng-click="$ctrl.setCustomStatus($ctrl.user.status.name,$ctrl.user.customStatusList[$ctrl.user.status.name ].description)">
+                    <i class="material-icons">&#xE876;</i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+    <ul ng-if="$ctrl.isCurrentUser && $ctrl.showStatus" class="dropdown-menu chinwag-status-dropdown">
+        <li ng-click="$ctrl.setStatus(statusName)" ng-repeat="(statusName,status) in $ctrl.statusList">
+            <table>
+                <tr>
+                    <td class="checkbox-td">
+                        <i class="material-icons {{status.class}} " ng-bind="status.icon"></i>
+                    </td>
+                    <td class="online-td">
+                        <span ng-bind="$ctrl.user.customStatusList[statusName].description || status.description" chinwag-status-dropdown-span></span>
+                    </td>
+                </tr>
+            </table>
+
+        </li>
+    </ul>
+</div>

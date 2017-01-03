@@ -1,0 +1,1066 @@
+@import "topic-selector";
+
+.green-icon{color: #008000;}
+.yellow-icon{color: #cece00;}
+.red-icon{color: #F22011;}
+.blue-icon{color: #3F729B;}
+.blue-icon:hover{color: #386589;background:#f6f6f6;}
+
+.blue-btn{background: #3F729B;}
+.blue-btn:hover{background: #386589;}
+.red-btn{background: #F44336;}
+.red-btn:hover{background: #F22011;}
+
+.chinwag-status-dropdown li {
+    padding: 1rem;
+}
+.chinwag{
+    .start-button{
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        z-index: 999;
+        .chat-icon-parent{
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            text-align: center;
+            background: $semi-primary;
+            padding: 0;
+            i{
+                font-size: $font-size-medium;
+                text-align: center;
+                vertical-align: middle;
+            }
+            &:hover{
+                background: $secondary !important;
+            }
+        }
+    }
+    .chat-box{
+        position: fixed;
+        bottom: 0;
+        min-height: 0;
+        height: 0;
+        padding: 0;
+        max-width: 350px;
+        width: 100%;
+        right: 15px;
+        z-index: 500;
+        text-align: left;
+        @include transition(all .5s cubic-bezier(0, 1, 0.5, 1));
+        .header{
+            padding: 10px 10px 10px 17px;
+            background-color: $base-color;
+            .chinwag-user-status{
+                position: relative;
+                margin: 0 0 0 0;
+                .chinwag-user-image {
+                    max-height: 40px;
+                    max-width: 40px;
+                    height: 40px;
+                    width: 40px;
+                }
+                .dropdown-toggle{
+                    .chinwag-status-icon{
+                        background: white;
+                        border: none;
+                        border-radius: 50%;
+                        font-size: 15px;
+                        position: absolute;
+                        left: 21px;
+                        top: 32px;
+                        cursor: pointer;
+                    }
+                }
+                .chinwag-status-user-name{
+                    position: absolute;
+                    top: -5px;
+                    left: 66px;
+                    color: $general-color;
+                    font-size: $font-size-large;
+                    font-weight: $font-weight-light;
+                }
+                .chinwag-status-user-type{
+                    position: absolute;
+                    top: 14px;
+                    left: 66px;
+                    color: $semi-primary;
+                    font-size: $font-size-smaller-base;
+                    font-weight: $font-weight-normal;
+                    text-transform: capitalize;
+                }
+                .chinwag-status-description{
+                    top: 30px;
+                    position: absolute;
+                    left: 66px;
+                    cursor: pointer;
+                    width: 50%;
+                    font-size: $font-size-smaller-base;
+                    color: $general-color;
+                    font-weight: $font-weight-normal;
+                    text-transform: capitalize;
+                    div{
+                        &:first-of-type{
+                            width: 100%;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+                    }
+                    input{
+                        height: auto;
+                        font-size: $font-size-smaller-base;
+                        color: $general-color;
+                        font-weight: $font-weight-normal;
+                        text-transform: capitalize;
+                        border: 0;
+                        margin: 0;
+                        width: 75px;
+                        &:focus{
+                            border: 0;
+                            box-shadow: none;
+                        }
+                    }
+                    .delete-btn-class{
+                        position: absolute;
+                        bottom: 0;
+                        left: 95px;
+                        background: $semi-primary;
+                        border-radius: 50%;
+                        width: 20px;
+                        height: 20px;
+                        text-align: center;
+                        i{
+                            color: $base-color;
+                            font-size: 16px;
+                            vertical-align: middle;
+                            margin: 0 auto;
+                            text-align: center;
+
+                        }
+                    }
+                    .check-btn-class{
+                        position: absolute;
+                        bottom: 0;
+                        left: 90px;
+                        background: $green;
+                        border-radius: 50%;
+                        width: 20px;
+                        height: 20px;
+                        text-align: center;
+                        i{
+                            color: $base-color;
+                            font-size: 16px;
+                            vertical-align: middle;
+                            margin: 0 auto;
+                            text-align: center;
+                        }
+                    }
+                }
+                .chinwag-status-dropdown li {
+                    padding: 1rem;
+                }
+            }
+            .closeChat{
+                position: absolute;
+                right: 25px;
+                top: 22px;
+                height: 24px;
+                i{
+                    color: $semi-primary;
+                    margin: 0;
+                }
+            }
+        }
+        &.opened {
+            height: calc(100vh - 80px);
+            max-height: calc(100vh - 167px);
+        }
+    }
+    .nav.nav-tabs{
+        position: static;
+        margin: 0;
+        background-color: $semi-secondary-l-hh;
+        box-shadow: none;
+        height: auto;
+        li {
+            height: auto;
+            line-height: 10px;
+            a{
+                border: none;
+                font-size: $font-size-large;
+                font-weight: $font-weight-normal;
+                color: $base-color;
+                text-transform: uppercase;
+                height: auto;
+                padding: 0;
+                line-height: 37px;
+                margin: 0;
+                border-radius: 0;
+            }
+            &.active {
+                a {
+                    cursor: pointer;
+                    background-color: transparent;
+                    border-bottom: 3px solid $semi-primary;
+                }
+            }
+        }
+    }
+    .chat-window-parent{
+        padding: 0;
+        font-size: 1.3rem;
+        box-shadow: none;
+        overflow: hidden;
+        border-radius: 0;
+        margin: 0;
+        #chats{
+            .chat-list{
+                .list-group{
+                    height: calc(100vh - 265px);
+                    overflow-y: auto;
+                    margin: 0 -15px 0 0;
+                    .collection{
+                        overflow-y: auto!important;
+                        margin: 0 0 0 0;
+                        border-radius: 0;
+                        border: none;
+                        .collection-item{
+                            padding: 10px 20px 13px 17px;
+                            border-bottom: 1px solid $general-semi-secondary;
+                            position: relative;
+                            cursor: pointer;
+                            &:hover{
+                                background: $semi-primary-l-tq;
+                            }
+                            &:last-of-type{
+                                border: 1px solid transparent;
+                            }
+                            .chinwag-user-status{
+                                position: relative;
+                                .chinwag-user-image{
+                                    width: 40px;
+                                    height: 40px;
+                                }
+                                .chinwag-status-icon{
+                                    left: 28px;
+                                    top: 28px;
+                                    position: absolute;
+                                    font-size: 15px;
+                                    background: $base-color;
+                                    border-radius: 50%;
+                                }
+                                .chinwag-status-user-name{
+                                    position: absolute;
+                                    left: 66px;
+                                    top: -2px;
+                                    font-size: $font-size-large;
+                                    font-weight: $font-weight-light;
+                                    color: $general-color;
+                                }
+                                .chinwag-status-user-type{
+                                    position: absolute;
+                                    left: 66px;
+                                    top: 14px;
+                                    display: inline-block;
+                                    color: $semi-primary;
+                                    font-size: $font-size-smaller-base;
+                                    font-weight: $font-weight-normal;
+                                    text-transform: capitalize;
+                                }
+                                .chinwag-status-description{
+                                    position: absolute;
+                                    left: 66px;
+                                    top: 29px;
+                                    display: inline-block;
+                                    color: $green;
+                                    font-size: $font-size-smaller-base;
+                                    font-weight: $font-weight-normal;
+                                    text-transform: capitalize;
+                                    div{
+                                        &:first-of-type{
+                                            width: 100%;
+                                        }
+                                    }
+                                }
+                            }
+                            .date{
+                                position: absolute;
+                                right: 34px;
+                                @include transform(translateY(-60%));
+                                .nav-pills{
+                                    li{
+                                        a{
+                                            padding: 0;
+                                            &:hover{
+                                                background: none;
+                                            }
+                                            span{
+                                                float: right;
+                                                clear: both;
+                                                &:first-of-type{
+                                                    font-size: $font-size-xsmaller-base;
+                                                    font-weight: $font-weight-light;
+                                                    padding: 0;
+                                                    color: $lighter-gray;
+                                                    position: relative;
+                                                    bottom: 10px;
+                                                }
+                                            }
+                                            .badge{
+                                                padding: 6px 8.6px;
+                                                border-radius: 50%;
+                                                background-color: $semi-secondary-l-hh;
+                                                position: relative;
+                                                bottom: 10px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        #contacts{
+            .chat-list{
+                .chat-list-search{
+                    height: 40px;
+                    background: none;
+                    padding: 0;
+                    border: 5px solid $general-semi-secondary-xxvl;
+                    border-radius: 0;
+                    .left-inner-icon{
+                        position: relative;
+                        padding: 0;
+                        height: 100%;
+                        i{
+                            font-size: $font-size-medium;
+                            color: $secondary;
+                            position: absolute;
+                            top: 50%;
+                            right: 10px;
+                            pointer-events: none;
+                           @include transform(translateY(-50%));
+                        }
+                        input{
+                            font-size: $font-size-base;
+                            padding-left: 14px;
+                            padding-right: 40px;
+                            box-sizing: border-box;
+                            height: 100%;
+                            outline: 0;
+                            border: 0;
+                        }
+                    }
+                    &.row{
+                        margin-left: 0;
+                        margin-right: 0;
+                    }
+                }
+                .list-group{
+                    height: calc(100vh - 305px);
+                    overflow-y: auto;
+                    margin: 0 -15px 0 0;
+                    .collection{
+                        margin: 0 0 0 0;
+                        border: none;
+                        overflow-y: auto!important;
+                        .collection-item{
+                            padding: 10px 20px 13px 17px;
+                            border-bottom: 1px solid $general-semi-secondary;
+                            cursor: pointer;
+                            &:hover{
+                                background: $semi-primary-l-tq;
+                            }
+                            &:last-of-type{
+                                border: 1px solid transparent;
+                            }
+                            .chinwag-user-status{
+                                position: relative;
+                                .chinwag-user-image{
+                                    width: 40px;
+                                    height: 40px;
+                                }
+                                .chinwag-status-icon{
+                                    left: 28px;
+                                    top: 28px;
+                                    position: absolute;
+                                    font-size: 15px;
+                                    background: $base-color;
+                                    border-radius: 50%;
+                                }
+                                .chinwag-status-user-name{
+                                    position: absolute;
+                                    left: 66px;
+                                    top: -4px;
+                                    font-size: $font-size-large;
+                                    font-weight: $font-weight-light;
+                                    color: $general-color;
+                                }
+                                .chinwag-status-user-type{
+                                    position: absolute;
+                                    left: 66px;
+                                    top: 12px;
+                                    display: inline-block;
+                                    color: $semi-primary;
+                                    font-size: $font-size-smaller-base;
+                                    font-weight: $font-weight-normal;
+                                    text-transform: capitalize;
+                                }
+                                .chinwag-status-description{
+                                    position: absolute;
+                                    left: 66px;
+                                    top: 27px;
+                                    width: 48%;
+                                    display: inline-block;
+                                    color: $green;
+                                    font-size: $font-size-smaller-base;
+                                    font-weight: $font-weight-normal;
+                                    text-transform: capitalize;
+                                }
+                            }
+                        }
+                    }
+                }
+                .no-result-found{
+                    display: block;
+                    font-size: $font-size-large;
+                    color: $general-color;
+                    text-align: center;
+                    font-weight: $font-weight-bold;
+                    margin-top: 10px;
+                    i{
+                        display: inline-block;
+                        position: relative;
+                        top: 6px;
+                        margin: 0 5px 0 0;
+                    }
+                }
+            }
+        }
+        .chat {
+            //height: calc(594px - 80px - 48px);
+            height: calc(100vh - 168px);
+            overflow: hidden;
+            .chat-name{
+                background-color: $general-semi-secondary-ll;
+                padding: 0;
+                margin: 0;
+                border: none;
+                .chinwag-user-status{
+                    background: $general-semi-secondary-xxvl;
+                    position: relative;
+                    padding: 10px ;
+                    .chinwag-user-image{
+                        height: 40px;
+                        max-height: 40px;
+                    }
+                    .chinwag-status-icon{
+                        position: absolute;
+                        background: $base-color;
+                        border-radius: 50%;
+                        font-size: 15px;
+                        left: 39px;
+                        bottom: 7px;
+                    }
+                    .chinwag-status-user-name{
+                        position: absolute;
+                        left: 66px;
+                        top: 7px;
+                        font-size: $font-size-large;
+                        font-weight: $font-weight-light;
+                        color: $general-color;
+                    }
+                    .chinwag-status-user-type{
+                        position: absolute;
+                        left: 66px;
+                        top: 23.5px;
+                        display: inline-block;
+                        color: $semi-primary;
+                        font-size: $font-size-smaller-base;
+                        font-weight: $font-weight-normal;
+                        text-transform: capitalize;
+                    }
+                    .chinwag-status-description{
+                        position: absolute;
+                        left: 66px;
+                        top: 38px;
+                        display: inline-block;
+                        color: $green;
+                        font-size: $font-size-smaller-base;
+                        font-weight: $font-weight-normal;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+            .message-list {
+                display: block;
+                overflow-y: auto;
+                height: calc(100vh - 415px);
+                margin-right: -17px;
+                padding: 15px 25px 0 10px;
+                margin-bottom: 0;
+                li{
+                    .chat-message{
+                        float: right;
+                        clear: both;
+                        display: inline-block;
+                        color: $black;
+                        margin: 0;
+                        width: 100%;
+                        word-break: break-all;
+                        padding: 0;
+                        .message-creator{
+                            .chinwag-user-status{
+                                .chinwag-user-image{
+                                    width: 40px;
+                                    height: 40px;
+                                    display: inline-block;
+                                    margin: 0;
+                                }
+                            }
+                        }
+                        .message-text{
+                            position: relative;
+                            bottom: 5px;
+                            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2), 0 6px 11px 0 rgba(0, 0, 0, 0.19);
+                            border: 1px solid $general-secondary;
+                            max-width: 70%;
+                            border-radius: 3px;
+                            background: $base-color;
+                            padding: 9px 14px;
+                            margin-bottom: 30px;
+                            &:before {
+                                content: "";
+                                position: absolute;
+                                top: 17px;
+                                bottom: auto;
+                                border-width: 8px 17px 8px 0;
+                                border-style: solid;
+                                border-color: transparent $general-secondary;
+                                display: block;
+                                width: 0;
+                            }
+                            &:after{
+                                content: "";
+                                position: absolute;
+                                top: 16px;
+                                bottom: auto;
+                                border-width: 9px 21px 9px 0;
+                                border-style: solid;
+                                border-color: transparent #ffffff;
+                                display: block;
+                                width: 0;
+                            }
+                            span{
+                                display: block;
+                                &:first-child{
+                                    word-break: break-all;
+                                    font-weight: $font-weight-light;
+                                    color: $general-color;
+                                    font-size: $font-size-large;
+                                }
+                                &.date{
+                                    font-size: $font-size-smaller-base;
+                                    color: $general-secondary;
+                                    font-weight: $font-weight-normal;
+                                }
+                            }
+                            br{
+                                display: none;
+                            }
+                        }
+                        &.receiver{
+                            float: left;
+                            .chinwag-user-image {
+                                float: left;
+                            }
+                            .message-text {
+                                float: left;
+                                left: 28px;
+                                &:before{
+                                    left: -17px;
+                                }
+                                &:after{
+                                    left: -14px;
+                                }
+                            }
+                        }
+                        &.sender{
+                            float: right;
+                            .chinwag-user-image {
+                                float: right;
+                            }
+                            .message-text{
+                                float: right;
+                                right: 28px;
+                                &:before{
+                                    right: -17px;
+                                    @include transform(rotate(180deg))
+                                }
+                                &:after{
+                                    right: -14px;
+                                    @include transform(rotate(180deg))
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.topic-select {
+                .message-list{
+                    height: calc(100vh - 475px);
+                }
+            }
+            .chinwag-status-user-type{
+                display: none;
+            }
+            .input-panel{
+                bottom: 0;
+                width: 100%;
+                min-height: 88px;
+                z-index: 200;
+                @include transition(height 1s ease-out 0.5s);
+                box-shadow: 0 2px 5px 3px rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+                position: relative !important;
+                textarea{
+                    border: none;
+                    padding: 5px 15px;
+                    height: 6vh;
+                    resize: none;
+                    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2),
+                    0 6px 11px 0 rgba(0, 0, 0, 0.19);
+                    background-color: $base-color;
+                }
+                .button-group .send {
+                    position: absolute;
+                    bottom: 1vh;
+                    right: 1vh;
+                }
+                textarea {
+                    border: 0;
+                    display: inline-block;
+                    padding: 14px 60px 14px 19px;
+                    height: 51px;
+                    vertical-align: middle;
+                    font-size: $font-size-large;
+                    font-weight: $font-weight-light;
+                    border-top: 1px solid $general-semi-secondary;
+                    &:focus{
+                        outline: none;
+                    }
+                }
+                input:focus, input:active {
+                    border: 0;
+                    box-shadow: 0;
+                }
+                .input-group{
+                    position: absolute;
+                    display: block;
+                    width: 215px;
+                    bottom: 50px;
+                    background-color: #ffffff;
+                    border: 1px solid #000000;
+                    border-radius: 5px;
+                    left: 53px;
+                    padding: 10px;
+                    &:before {
+                        content: "";
+                        position: absolute;
+                        bottom: -20px;
+                        left: 37px;
+                        border-width: 19px 8px 0;
+                        border-style: solid;
+                        border-color: #000000 transparent;
+                        display: block;
+                        width: 0
+                    }
+                    &:after{
+                        content: "";
+                        position: absolute;
+                        left: 36px;
+                        bottom: -17px;
+                        border-width: 22px 9px 0;
+                        border-style: solid;
+                        border-color: #fff transparent;
+                        display: block;
+                        width: 0;
+                    }
+                    .emoji{
+                        margin: 5px;
+                    }
+                }
+                .button-group {
+                    background: $semi-secondary;
+                    text-align: left;
+                    a {
+                        border-radius: 0;
+                        &:first-of-type{
+                            margin-left: 15px;
+                        }
+                        padding: 6.5px 15px;
+                        i {
+                            color: $base-color;
+                            vertical-align: middle;
+                            font-size: $font-size-xxmlarge;
+                        }
+                        &:hover {
+                            background-color: transparent;
+                        }
+                    }
+                    .send {
+                        position: absolute;
+                        top: 0;
+                        right: 15px;
+                        height: 40px;
+                        width: 40px;
+                        text-align: center;
+                        border-radius: 50%;
+                        background: $semi-primary;
+                        margin: 5px 0;
+                        &:hover{
+                            background: $semi-primary;
+                        }
+                        i{
+                            vertical-align: middle;
+                            text-align: center;
+                            background-color: $semi-primary;
+                            position: absolute;
+                            left: 1px;
+                            bottom: -8px;
+                        }
+                    }
+                }
+            }
+            .chat-time{
+                margin-bottom: 1vw;
+                font-size: 1.5vw;
+                text-align: center;
+                width: 100%;
+                margin-top: 0.5rem;
+            }
+            .user-input label{
+                font-size: 2vh;
+            }
+            .chat-name{
+                .chinwag-status-description{
+                    width: 25%;
+                }
+                >span{
+                    margin-left: 10px;
+                }
+            }
+            .chat-message{
+                &.sender .message-text, &.sender .chinwag-user-image {
+                    display: inline-block;
+                    margin-left: 4px;
+                }
+                &:after{
+                    content: "";
+                    display: block;
+                    clear: both;
+                }
+                &.sender {
+                    .message-text {
+                        background: rgb(227, 227, 227);
+                        left: -25px;
+                        border: 0;
+                        float: left;
+                        &:before{
+                            display: none;
+                        }
+                        &:after{
+                            content: "";
+                            position: absolute;
+                            top: 17px;
+                            right: -16px;
+                            left: initial;
+                            border-style: solid;
+                            border-width: 12px 0 12px 20px;
+                            border-color: transparent #e3e3e3;
+                            display: block;
+                            width: 0;
+                            z-index: 1;
+                        }
+                    }
+                }
+            }
+            .message-time{
+                font-size: 16px;
+                clear: both;
+                float: left;
+                margin: 0 20px;
+                position: relative;
+                left: 30%;
+            }
+        }
+    }
+}
+.noTopic{
+    font-size: 16px;
+    padding: 15px 0 0 0;
+    float: left;
+    .close-button{
+        background: $semi-secondary !important;
+        padding: 5px 10px !important;
+        border-radius: 50% !important;
+        margin: -5px 0 0 20px !important;
+        float: right !important;
+        i{
+            color: $base-color !important;
+            font-size: $font-size-h4 !important;
+        }
+    }
+}
+.online-td{
+    span{
+        margin: -4px 0 0 5px;
+        float: left;
+    }
+}
+
+//////////////////////////////////////////// Medium Media Query Starts Here ////////////////////////////////////////////
+@media (min-width: $screen-md-min) and (max-width: $screen-md-max) {}
+//////////////////////////////////////////// Medium Media Query Ends Here //////////////////////////////////////////////
+
+//////////////////////////////////////////// Small Media Query Starts Here /////////////////////////////////////////////
+@media (min-width: $screen-sm-min) and (max-width: $screen-sm-max){
+    .chinwag .chat-box {
+        height: calc(100vh - 60px);
+        max-height: none;
+        z-index: 999;
+        bottom: 0;
+        right: 0;
+        width: 50%;
+        max-width: 50%;
+    }
+    .chinwag .chat-window-parent .chat .message-list {
+        height: calc(100vh - 260px);
+    }
+    .chinwag .chat-window-parent .chat.topic-select .message-list {
+        height: calc(100vh - 320px);
+    }
+    .chinwag .chat-window-parent .chat .input-panel .button-group a {
+        padding: 8.2px 15px;
+    }
+    .chinwag .tab-content.card-panel #chats .chat-list .list-group {
+        height: calc(100vh - 100px);
+    }
+    .chinwag .chat-window-parent #contacts .chat-list .list-group {
+        height: calc(100vh - 140px);
+    }
+    .chinwag .chat-box {
+        width: 100%;
+        max-width: 100%;
+        position: fixed;
+        margin: 0;
+        bottom: 0;
+        top: 100%;
+        right: 0;
+        left: 0;
+        height: 100%;
+        z-index: 999;
+        min-height: 100%;
+        background: #ffffff;
+        &.opened {
+            top: 0;
+        }
+    }
+    .chinwag-status-dropdown{
+        bottom: auto !important;
+        position: fixed;
+        left: 10px;
+        width: 30%;
+        margin-top: 5px;
+    }
+    .chinwag-status-dropdown li table tr td span{
+        margin: -4px 0 0 5px;
+        float: left;
+    }
+    .chinwag .chat-window-parent .chat .input-panel .button-group .send{
+        -webkit-transform: rotate(180deg);
+    }
+    .chinwag .chat-window-parent .chat .input-panel .button-group .send i{
+        left: -2px;
+    }
+    .chinwag .chat-box .header .chinwag-user-status .chinwag-status-description .delete-btn-class i {
+        margin: 0 0 0 -8px;
+    }
+    .chinwag .chat-box .header .chinwag-user-status .chinwag-status-description .check-btn-class i {
+        margin-left: -8px;
+    }
+    .chinwag .chat-box .header{
+        position: relative;
+        overflow: hidden;
+    }
+}
+//////////////////////////////////////////// Small Media Query Ends Here ///////////////////////////////////////////////
+
+//////////////////////////////////////////// Extra Small Media Query Starts Here ///////////////////////////////////////
+@media (max-width: $screen-xs-max){
+    .chinwag .tab-content.card-panel #chats .chat-list .list-group {
+        height: calc(100vh - 100px);
+    }
+    .chinwag .tab-content.card-panel #contacts .chat-list .list-group {
+        height: calc(100vh - 140px);
+    }
+    .chinwag .chat-window-parent .chat .input-panel {
+        bottom: 0;
+        width: 100%;
+        position: fixed !important;
+        min-height: initial;
+    }
+    .chinwag .tab-content.card-panel .chat .message-list {
+        height: calc(100vh - 260px);
+    }
+    .chinwag .tab-content.card-panel .chat.topic-select .message-list {
+        height: calc(100vh - 320px);
+    }
+    .chinwag .chat-window-parent .chat .input-panel .input-group{
+        bottom: 51px;
+    }
+    .chinwag .tab-content.card-panel .chat{
+        height: calc(126vh - 80px - 48px);
+    }
+    .chinwag {
+        width: 100%;
+        height: 100%;
+        .chat-box {
+            width: 100%;
+            max-width: 100%;
+            position: fixed;
+            margin: 0;
+            bottom: 0;
+            top: 100%;
+            right: 0;
+            left: 0;
+            height: 100%;
+            z-index: 999;
+            min-height: 100%;
+            background: $base-color;
+            &.opened {
+                top: 0;
+            }
+        }
+        .input-panel textarea {
+            resize: none;
+        }
+        .chat {
+            height: calc(100vh - 80px - 48px);
+        }
+    }
+    .chinwag .chat-window-parent #chats .chat-list .list-group .collection .collection-item .chinwag-user-status .chinwag-status-user-name{
+        font-size: $font-size-base;
+    }
+    .chinwag .chat-window-parent #chats .chat-list .list-group .collection .collection-item .chinwag-user-status .chinwag-status-user-type{
+        font-size: $font-size-xsmaller-base;
+        letter-spacing: 0.2px;
+    }
+    .chinwag .chat-window-parent #chats .chat-list .list-group .collection .collection-item .chinwag-user-status .chinwag-status-description{
+        font-size: $font-size-xsmaller-base;
+        letter-spacing: 0.2px;
+    }
+    .chinwag .chat-window-parent #contacts .chat-list .list-group .collection .collection-item .chinwag-user-status .chinwag-status-user-name{
+        font-size: $font-size-base;
+    }
+    .chinwag .chat-window-parent #contacts .chat-list .list-group .collection .collection-item .chinwag-user-status .chinwag-status-user-type{
+        font-size: $font-size-xsmaller-base;
+        letter-spacing: 0.2px;
+    }
+    .chinwag .chat-window-parent #contacts .chat-list .list-group .collection .collection-item .chinwag-user-status .chinwag-status-description{
+        font-size: $font-size-xsmaller-base;
+        letter-spacing: 0.2px;
+    }
+    .chinwag .chat-box .header .chinwag-user-status .chinwag-status-user-name{
+        font-size: $font-size-base;
+    }
+    .chinwag .chat-box .header .chinwag-user-status .chinwag-status-user-type{
+        font-size: $font-size-xsmaller-base;
+        letter-spacing: 0.2px;
+    }
+    .chinwag .chat-box .header .chinwag-user-status .chinwag-status-description{
+        font-size: $font-size-xsmaller-base;
+        letter-spacing: 0.2px;
+    }
+    .chinwag .chat-window-parent .chat .chat-name .chinwag-user-status .chinwag-status-user-name{
+        font-size: $font-size-base;
+    }
+    .chinwag .chat-window-parent .chat .chat-name .chinwag-user-status .chinwag-status-user-type{
+        font-size: $font-size-xsmaller-base;
+        letter-spacing: 0.2px;
+    }
+    .chinwag .chat-window-parent .chat .chat-name .chinwag-user-status .chinwag-status-description{
+        font-size: $font-size-xsmaller-base;
+        letter-spacing: 0.2px;
+    }
+    .chinwag .chat-window-parent .chat .message-list li .chat-message .message-text span:first-child{
+        font-size: $font-size-base;
+        letter-spacing: 0.4px;
+    }
+    .chinwag-status-dropdown{
+        position: fixed;
+        bottom: auto !important;
+        left: 10px;
+        width: 50%;
+        margin-top: 5px;
+    }
+    .chinwag-status-dropdown li table{
+        width: 100%;
+    }
+    .chinwag .chat-window-parent .chat .input-panel .button-group .send{
+        -webkit-transform: rotate(180deg);
+    }
+    .chinwag .chat-window-parent .chat .input-panel .button-group .send i{
+        left: -2px;
+    }
+    .chinwag .chat-box .header .chinwag-user-status .chinwag-status-description .delete-btn-class i {
+        margin: 0 0 0 -8px;
+    }
+    .chinwag .chat-box .header .chinwag-user-status .chinwag-status-description .check-btn-class i {
+        margin-left: -8px;
+    }
+    .chinwag .chat-box .header{
+        position: relative;
+        overflow: hidden;
+    }
+    .chinwag .chat-window-parent .chat .input-panel .button-group a:first-of-type{
+        margin-left: 0;
+    }
+    .online-td span {
+        margin: 2px 0 0 5px;
+    }
+}
+//////////////////////////////////////////// Extra Small Media Query Ends Here /////////////////////////////////////////
+@media (min-width: 320px) and (max-width: 400px){
+    .chinwag-status-dropdown li table tr .checkbox-td{
+        width: 20%;
+        float: left;
+    }
+    .chinwag-status-dropdown li table tr .online-td{
+        width: 80%;
+        float: left;
+    }
+}
+@media (min-width: 401px) and (max-width: 500px){
+    .chinwag-status-dropdown li table tr .checkbox-td{
+        width: 15%;
+        float: left;
+    }
+    .chinwag-status-dropdown li table tr .online-td{
+        width: 85%;
+        float: left;
+    }
+}
+@media (min-width: 501px) and (max-width: 767px){
+    .chinwag-status-dropdown li table tr .checkbox-td{
+        width: 10%;
+        float: left;
+    }
+    .chinwag-status-dropdown li table tr .online-td{
+        width: 90%;
+        float: left;
+    }
+}

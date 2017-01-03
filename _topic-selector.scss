@@ -1,0 +1,165 @@
+.topic {
+  .currentProduct{
+    background: $semi-primary-l-tq;
+    div{
+      float: left;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      margin: 10px 10px 10px 10px;
+      .topic-img-sm{
+        height: 100%;
+        margin-left: 50%;
+        @include transform(translateX(-50%));
+        overflow: hidden;
+        display: block;
+      }
+    }
+    .currentProductName{
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 190px;
+      margin-left: 9px;
+      padding-right: 5px;
+      line-height: 60px;
+      font-size: $font-size-smaller-base;
+      font-weight: $font-weight-light;
+      color: $general-color;
+      float: left;
+    }
+    .currentProductPrice{
+      float: right;
+      margin-right: 30px;
+      line-height: 60px;
+      font-size: $font-size-large;
+      font-weight: $font-weight-bold;
+      color: $semi-primary;
+    }
+    &:after{
+      clear: both;
+      content: '';
+      display: block;
+    }
+  }
+
+  .well{
+    input{
+      margin-top: 10px;
+    }
+  }
+  .noTopic {
+    button{
+      border: 0;
+      background: none;
+      outline: none;
+      padding: 0;
+      margin: 0 0 0 15px;
+      box-shadow: none;
+
+    }
+  }
+  button {
+    padding: 2px;
+    border-radius: 2px;
+    float: right;
+    i{
+      color: $semi-primaryToRed;
+      font-size: 3em;
+    }
+  }
+  .topicSelectorOverlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: $black;
+    z-index: 201;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+  }
+  .topicSelector{
+    padding: 0 12px 10px;
+    width: 93%;
+    z-index: 999;
+    position: absolute;
+    background-color: $base-color;
+    top: 50%;
+    left: 50%;
+    @include transform(translate(-50%, -50%));
+    overflow: hidden;
+    border-radius: 0;
+    border: none;
+    ul{
+      clear: both;
+      max-height: 63vh;
+      overflow-y: auto;
+      margin-right: -15px;
+      margin-bottom: 0;
+      li{
+        padding: 5px;
+        cursor: pointer;
+        margin: 0 0 0 22px;
+        width: 40%;
+        &:hover div{
+          @include transition(box-shadow .25s);
+          box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+        div{
+          text-align: center;
+          padding: 5px;
+        }
+        img{
+          width: 100%;
+          margin-bottom: 5px;
+        }
+        span{
+          font-size: 1.1rem;
+          color: $semi-primary;
+          word-break: break-all;
+        }
+      }
+    }
+    .topicButtons{
+      float: right;
+      font-size:inherit;
+      width: 100%;
+      text-align: center;
+      margin: 0 0 5px 0;
+      .close-button{
+        background: $semi-secondary;
+        padding: 5px 10px;
+        border-radius: 50%;
+        margin: 5px -7px 0 0;
+        box-shadow: 0 0 0 0;
+        float: right;
+        i{
+          color: $base-color !important;
+          font-size: $font-size-h4 !important;
+        }
+      }
+    }
+  }
+}
+
+//////////////////////////////////////////// Extra Small Media Query Starts Here ///////////////////////////////////////
+@media (max-width: $screen-xs-max){
+  .topic {
+    .topicSelector {
+      .topicButtons {
+        .close-button{
+          width: 30px;
+          height: 30px;
+          padding: 0;
+        }
+      }
+      ul{
+        z-index: 999;
+        li{
+          margin: 0 0 0 19px;
+        }
+      }
+    }
+  }
+}

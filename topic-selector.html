@@ -1,0 +1,33 @@
+<div class="topic">
+    <div ng-if="$ctrl.currentTopicProduct" class="currentProduct">
+        <div class="z-depth-1">
+            <img class="topic-img-sm" ng-src="{{$ctrl.getCoverImageFullUrl($ctrl.currentTopicProduct)}}" alt="">
+        </div>
+        <span class="text-capitalize ellipsis topicDescription currentProductName" ng-bind="$ctrl.currentTopicProduct.name"></span>
+        <span class="text-capitalize ellipsis topicDescription currentProductPrice" ng-bind="$ctrl.currentTopicProduct.price | niCurrency"></span>
+    </div>
+    <div class="topicSelectorOverlay" ng-if="$ctrl.displayTopicList" ng-click="$ctrl.displayTopicList==false"></div>
+    <div class="well input-group topicSelector" ng-if="$ctrl.displayTopicList">
+        <span class="noTopic" ng-show="$ctrl.topicProductList.length==0">
+                You don't visit any Products yet...
+                <button class="btn btn-raised btn-sm close-button" type="button" ng-click="$ctrl.displayTopicList = false;">
+                    <i class="material-icons">&#xE14C;</i>
+                </button>
+            </span>
+        <div ng-show="$ctrl.topicProductList.length>0">
+            <div class="topicButtons input-group-btn">
+                <button class="btn btn-raised btn-sm close-button" type="button" ng-click="$ctrl.displayTopicList = false">
+                    <i class="material-icons">&#xE14C;</i>
+                </button>
+            </div>
+            <ul class="chat-topic-select row" ng-model="$ctrl.newTopic">
+                <li ng-repeat="topicProduct in $ctrl.topicProductList track by $index" class="col-xs-6 col-md-3" ng-click="$ctrl.selectTopic({document_id:topicProduct._id,collection:'products'})" ng-show="topicProduct">
+                    <div class="z-depth-1">
+                        <img class="topicImg" ng-src="{{$ctrl.getCoverImageFullUrl(topicProduct)}}" alt="">
+                        <span class="text-capitalize ellipsis topicDescription" ng-bind="topicProduct.price | niCurrency"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

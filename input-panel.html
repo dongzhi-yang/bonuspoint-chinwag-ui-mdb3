@@ -1,0 +1,20 @@
+<div class="input-panel">
+    <textarea placeholder="Enter message..." ng-model="$ctrl.messageText" ng-keydown="$ctrl.key($event)" ng-focus="$ctrl.displayEmoji = false"></textarea>
+    <div class="input-group" ng-show="$ctrl.displayEmoji">
+        <span ng-click="$ctrl.inputEmoji(emoji)" ng-repeat="emoji in $ctrl.emojiList" ng-bind-html="':'+emoji+':' | embed" class="emoji"></span>
+    </div>
+    <div class="button-group text-center">
+        <a class="btn-lg btn-raised waves-effect waves-light blue-icon" ng-click="$ctrl.chatList()">
+            <i class="material-icons">&#xE7FB;</i>
+        </a>
+        <a class="btn-lg btn-raised btn-large waves-effect waves-light blue-icon" ng-click="$ctrl.displayEmoji = !$ctrl.displayEmoji">
+            <i class="material-icons">&#xE420;</i>
+        </a>
+        <a class="btn-lg btn-raised btn-large waves-effect waves-light blue-icon" ng-click="$ctrl.displayTopicList = true;">
+            <i class="material-icons">&#xE8CB;</i>
+        </a>
+        <a class="btn-floating btn-large waves-effect waves-light send blue-btn" ng-click="$ctrl.action.sendMessage()" ng-keypress="$ctrl.key($event)">
+            <i class="material-icons">&#xE163;</i>
+        </a>
+    </div>
+</div>

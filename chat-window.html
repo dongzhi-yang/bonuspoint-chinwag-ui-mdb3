@@ -1,0 +1,18 @@
+<div class="chat" ng-class="{'topic-select': $ctrl.chat.topic}">
+    <div>
+        <div class="well well-sm chat-name row">
+          <div ng-repeat="p in $ctrl.participants" ng-show="p._id!=$ctrl.currentUser_id">
+            <user-status uid="p._id"></user-status>
+          </div>
+        </div>
+    </div>
+
+    <topic-selector topic="$ctrl.chat.topic" display-topic-list="$ctrl.displayTopicList" on-select="$ctrl.updateTopic(topic)"></topic-selector>
+
+    <span class="chat-time">{{$ctrl.chat._createdAt | date:'medium'}}</span>
+
+    <message-list chat-id="$ctrl.chat._id"></message-list>
+
+    <input-panel messages="$ctrl.messages" chat="$ctrl.chat" display-topic-list="$ctrl.displayTopicList"></input-panel>
+
+</div>

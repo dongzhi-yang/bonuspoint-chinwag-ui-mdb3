@@ -1,0 +1,11 @@
+<div>
+    <user-status uid="participant.user_id" ng-repeat="participant in $ctrl.getOtherParticipants($ctrl.data)"></user-status>
+    <div class="date">
+        <ul class="nav nav-pills">
+            <li><a >
+                <span ng-bind="$ctrl.chatDate | date:'dd/MM/yyyy'"></span>
+                <span class="message-counter badge"  ng-bind="$ctrl.unreadMessagesCount" ng-show="$ctrl.unreadMessagesCount>0"></span>
+            </a></li>
+        </ul>
+    </div>
+</div>

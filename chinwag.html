@@ -1,0 +1,74 @@
+<div class="chinwag" ng-if="$ctrl.onLoad">
+
+    <div id="chat-button" ng-click="$ctrl.toggleChinwag()" ng-show="!$ctrl.chinwagOpen && $ctrl.mode == 'desktop'" class="start-button hidden-xs hidden-sm">
+        <button type="button" class="btn btn-primary chat-icon-parent z-depth-1">
+            <i class="material-icons">&#xE0B7;</i>
+            <span class="badge" ng-show="$ctrl.totalUnreadMessagesCount>0" ng-bind="$ctrl.totalUnreadMessagesCount"></span>
+        </button>
+    </div>
+
+    <a class="waves-effect waves-light visible-xs visible-sm" ng-show="$ctrl.mode == 'mobile'" ng-click="$ctrl.toggleChinwag()">
+        <i class="material-icons">&#xE0B9;</i>
+    </a>
+
+    <div>
+     <div class="main z-depth-1 chat-box" ng-class="{opened: $ctrl.chinwagOpen}">
+        <!--header of chat window-->
+         <div class="header">
+             <user-status></user-status>
+             <a class="closeChat" ng-click="$ctrl.toggleChinwag()"><i class="material-icons">&#xE15B;</i></a>
+         </div>
+           <!--//header of chat window-->
+           <!--tabs-->
+         <ul class="nav nav-tabs tabs-2 row">
+             <li class="col-md-6" ng-class="{active: $ctrl.tab == 'chats'}" ng-click="$ctrl.changeTab('chats')">
+                 <a data-toggle="tab" href="#chats">Chats</a>
+             </li>
+             <li class="col-md-6" ng-class="{active: $ctrl.tab == 'contacts'}"  ng-click="$ctrl.changeTab('contacts')">
+                 <a data-toggle="tab" href="#contacts">Contacts</a>
+             </li>
+         </ul>
+         <!--//tabs-->
+         <div class="tab-content card-panel chat-window-parent">
+
+             <div id="chats" class="tab-pane fade in animated fadeIn" ng-class="{active: $ctrl.tab == 'chats'}">
+                 <div class="chat-list" ng-show="!$ctrl.currentChat._id">
+                     <div class="list-group">
+                         <span ng-show="results.length == 0">No results found</span>
+                         <ul ng-hide="results.length == 0" class="collection ">
+                             <li class="collection-item" ng-repeat="chat in $ctrl.chatList">
+                                 <div ng-click="$ctrl.openChatWindow(chat)" >
+                                     <chat data = "chat"></chat>
+                                 </div>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+
+             <div id="contacts" class="tab-pane fade in animated fadeIn" ng-class="{active: $ctrl.tab == 'contacts'}">
+                 <div class="chat-list" ng-show="!$ctrl.currentChat._id">
+                     <div class="row chat-list-search">
+                         <div class="col-md-12 left-inner-icon">
+                             <i class="material-icons">&#xE8B6;</i>
+                             <input type="search" ng-model="$ctrl.contactSearch" placeholder="Search Contacts" class="form-control">
+                         </div>
+                     </div>
+                     <span ng-show="contactSearchResults.length == 0" class="no-result-found"><i class="material-icons">&#xE002;</i>No results found</span>
+                     <div class="list-group">
+                         <ul class="collection" ng-show="!$ctrl.currentChat._id">
+                             <li class="collection-item" ng-repeat="contact in $ctrl.contactList | filter:$ctrl.contactSearch as contactSearchResults" ng-click="$ctrl.openChatWindowByContactId(contact._id)">
+                                 <user-status uid="contact._id"></user-status>
+                             </li>
+                         </ul>
+                     </div>
+                 </div>
+             </div>
+             <chat-window chat="$ctrl.currentChat" ng-if="$ctrl.currentChat._id"></chat-window>
+         </div>
+     </div>
+    </div>
+
+</div>
+
+<login-signup-modal open="$ctrl.notLogin" on-close="$ctrl.toggleChinwag()"></login-signup-modal>

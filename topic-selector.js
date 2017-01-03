@@ -1,14 +1,14 @@
 'use strict';
-
+import template from './topic-selector.html';
 angular.module('chinwag')
     .component('topicSelector', {
-        templateUrl: 'client/chinwag/topic-selector.html',
+        templateUrl: template,
         bindings: {
             topic: '=',
             onSelect: '&?',
             displayTopicList: '='
         },
-        controller: function($scope, $image, $productViewHistory, $log, $product, $topicSelector) {
+        controller: ["$scope", "$productViewHistory","$log",'$product', "$topicSelector",function($scope, $productViewHistory, $log, $product, $topicSelector) {
             this.noLog = true;
             this.noLog || $log.debug("topicselector controller runs at:" + new Date());
             $productViewHistory.data.call(this, $scope);
@@ -31,5 +31,5 @@ angular.module('chinwag')
                 });
             };
             this.noLog || $log.debug("topicselector controller ends at:" + new Date());
-        }
+        }]
     });

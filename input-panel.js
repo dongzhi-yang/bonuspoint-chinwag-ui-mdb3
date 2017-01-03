@@ -2,8 +2,8 @@
 import template from './input-panel.html';
 angular.module('chinwag')
     .component('inputPanel', {
-        templateUrl: 'client/chinwag/input-panel.html',
-        controller: function ($scope, $reactive, $toastr, $sce, $sanitize) {
+        templateUrl: template,
+        controller: ['$scope', '$reactive', '$toastr', '$sce',function ($scope, $reactive, $toastr, $sce) {
             $reactive(this).attach($scope);
 
             this.action = {};
@@ -132,7 +132,7 @@ angular.module('chinwag')
              */
             this.emojiList = ["bowtie", "smile", "laughing", "blush", "smiley", "relaxed", "smirk",
                 "heart_eyes", "kissing_heart", "small_red_triangle_down", "shipit"];
-        },
+        }],
         bindings: {
             chat: '=',
             displayTopicList: '=',

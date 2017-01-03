@@ -1,5 +1,5 @@
 'use strict';
-import '{}/node_modules/ng-embed/src/ng-embed.css';
+
 import template from './chinwag.html';
 angular.module('chinwag')
     .component('chinwag', {
@@ -7,7 +7,7 @@ angular.module('chinwag')
         bindings: {
           mode: '@?' // "desktop" or "mobile"
         },
-        controller: function($scope, $image, $chinwag, $log) {
+        controller: ["$scope", "$image", "$chinwag", "$log",function($scope, $image, $chinwag, $log) {
 
             this.$onInit = () => {
                 this.noLog = true;
@@ -44,5 +44,5 @@ angular.module('chinwag')
             this.openChatWindow =  (chat) => {
                 this.currentChat = chat;
             };
-        }
+        }]
     });

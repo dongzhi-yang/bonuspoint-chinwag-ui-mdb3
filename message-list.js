@@ -3,7 +3,7 @@ import template from './message-list.html';
 angular.module('chinwag')
     .component('messageList', {
         templateUrl: template,
-        controller: function($scope, $messageList, $timeout, $element, $attrs, $log, $interval) {
+        controller: ["$scope", "$messageList", "$timeout", "$element", "$attrs", "$log", "$interval",function($scope, $messageList, $timeout, $element, $attrs, $log, $interval) {
             this.noLog = true;
             this.noLog || $log.debug("MessageList controller has started at" + new Date(), this.chatId);
             $messageList.dataService.call(this, $scope);
@@ -88,7 +88,7 @@ angular.module('chinwag')
 
                 }, 0);
             }
-        },
+        }],
         bindings: {
             chatId: '='
         }

@@ -1,7 +1,8 @@
 'use strict';
+import template from './user-status.html';
 angular.module('chinwag')
     .component('userStatus', {
-        templateUrl: 'client/chinwag/user-status.html',
+        templateUrl: template,
         bindings: {
             uid: "<?", //a user id.
             showStatus:"<?" ,//boolean, whether to show the status of user
@@ -9,10 +10,10 @@ angular.module('chinwag')
             showStatusDescription:"<?",
             showUserType:"<?"
         },
-        controller: function($scope,$userStatus, $log, $element,$timeout) {
+        controller: ["$scope","$userStatus", "$log", "$element","$timeout",function($scope,$userStatus, $log, $element,$timeout) {
             this.noLog = true;
             this.noLog || $log.debug("userStatus Controller started at:" + new Date());
-      
+
 
             $userStatus.data.call(this,$scope);
             let defaultValues={
@@ -56,5 +57,5 @@ angular.module('chinwag')
 
 
             }
-        }
+        }]
     });

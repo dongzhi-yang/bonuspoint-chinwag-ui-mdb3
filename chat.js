@@ -1,8 +1,8 @@
-import template from './chat-window.html';
+import template from './chat.html';
 angular.module('chinwag')
     .component('chat', {
         templateUrl: template,
-        controller: function($scope, $toastr, $log, $chatWindow) {
+        controller: ["$scope", "$toastr", "$log", "$chatWindow",function($scope, $toastr, $log, $chatWindow) {
 
             this.noLog = false;
             this.getUnreadMessagesCount = (chat) => {
@@ -32,7 +32,7 @@ angular.module('chinwag')
                 //  debugger;
                   this.unreadMessagesCount = this.getUnreadMessagesCount(newValue);
             }, true)
-        },
+        }],
         bindings: {
             data: '='
         }

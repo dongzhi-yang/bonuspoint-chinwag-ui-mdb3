@@ -33,7 +33,14 @@ Package.onUse(function(api) {
   'message-list.js',
   'message.html',
   'message.js',
+  'topic-selector.html',
+  'topic-selector.js',
+  'user-status.html',
+  'user-status.js'
   ],'client');
+});
+Npm.depends({
+    "ng-embed": "2.1.1"
 });
 
 Package.onTest(function(api) {

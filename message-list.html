@@ -1,7 +1,7 @@
 
     <ul class="card-content grey-text message-list hide-scroll list-group" stop-parent-scroll>
         <li ng-repeat="message in $ctrl.messages track by $index">
-          <div ng-show="$ctrl.differenceInSeconds($ctrl.messages[$index-1]._createdAt,message._createdAt)>=10" style="text-align: center; font-size: 0.7em; padding-bottom: 4px;">
+          <div ng-show="$ctrl.differenceInSeconds($ctrl.messages[$index-1]._createdAt,message._createdAt)>=180" style="text-align: center; font-size: 0.7em; padding-bottom: 4px;">
             {{message._createdAt | date:'yyyy-MM-dd hh:mm:ss'}}
           </div>
             <message message-id="message._id"></message>

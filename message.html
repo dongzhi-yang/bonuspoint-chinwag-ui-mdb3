@@ -1,5 +1,5 @@
-<div class ="chat-message" ng-class="$ctrl.message.creator_id == $ctrl.uid ? 'sender' : 'receiver'">
-    <user-status uid="$ctrl.message.creator_id" show-status="false" show-name="false" show-status-description="false" show-user-type="false" class="message-creator"></user-status>
+<div class ="chat-message" ng-class="$ctrl.message._createdBy == $ctrl.uid ? 'sender' : 'receiver'">
+    <user-status uid="$ctrl.message._createdBy" show-status="false" show-name="false" show-status-description="false" show-user-type="false" class="message-creator"></user-status>
     <!-- <div>
       <span class="date" ng-bind="$ctrl.message._lastModifiedAt | date:'dd/MM/yyyy'"></span>
     </div> -->

@@ -7,7 +7,7 @@ angular.module('chinwag')
         bindings: {
           mode: '@?' // "desktop" or "mobile"
         },
-        controller: ["$scope", "$image", "$chinwag", "$log",function($scope, $image, $chinwag, $log) {
+        controller: ["$scope", "$image", "$chinwag", "NiMediaQuery", "$log",function($scope, $image, $chinwag, NiMediaQuery, $log) {
 
             this.$onInit = () => {
                 this.noLog = true;
@@ -31,7 +31,10 @@ angular.module('chinwag')
 
             // open chat on event listen
             $scope.$on('open-chat', () => {
-                this.chinwagOpen = true;
+                NiMediaQuery.getMedia().then((media) => {
+                    if((media == 'xs' || media == 'sm') && this.mode != 'desktop') this.chinwagOpen = true;
+                    if(media != 'xs' && media != 'sm' && this.mode == 'desktop') this.chinwagOpen = true;
+                });
             });
 
             this.toggleChinwag = () => {

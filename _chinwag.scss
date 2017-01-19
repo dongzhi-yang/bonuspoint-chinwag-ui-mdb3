@@ -880,6 +880,15 @@
         margin: -4px 0 0 5px;
         float: left;
     }
+    .chinwag .chat-window-parent .chat .input-panel {
+        bottom: 0;
+        width: 100%;
+        position: relative !important;
+        min-height: initial;
+    }
+    .chinwag .chat-box.opened .chat-window-parent .chat .input-panel {
+        position: fixed !important;
+    }
     .chinwag .chat-window-parent .chat .input-panel .button-group .send{
         -webkit-transform: rotate(180deg);
     }
@@ -910,8 +919,11 @@
     .chinwag .chat-window-parent .chat .input-panel {
         bottom: 0;
         width: 100%;
-        position: fixed !important;
+        position: relative !important;
         min-height: initial;
+    }
+    .chinwag .chat-box.opened .chat-window-parent .chat .input-panel {
+        position: fixed !important;
     }
     .chinwag .tab-content.card-panel .chat .message-list {
         height: calc(100vh - 260px);

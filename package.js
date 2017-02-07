@@ -21,7 +21,9 @@ Package.onUse(function(api) {
   api.addAssets(['_chinwag.scss',
   '_topic-selector.scss',
   ],'client');
-  api.addFiles(['chat-window.html',
+  api.addFiles([
+  '_dependencies.js',
+  'chat-window.html',
   'chat-window.js',
   'chat.html',
   'chat.js',

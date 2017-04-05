@@ -557,8 +557,9 @@
                             }
                             span{
                                 display: block;
+                                word-break: break-word;
                                 &:first-child{
-                                    word-break: break-all;
+                                    word-break: break-word;
                                     font-weight: $font-weight-light;
                                     color: $general-color;
                                     font-size: $font-size-large;
